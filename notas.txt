@@ -1,0 +1,12 @@
+npm install @angular/cdk
+npm install @angular/localize
+npm install @angular/material
+npm install @angular/fire
+npm install firebase
+npm install @ngrx/effects
+npm install @ngrx/entity
+npm install @ngrx/store
+npm install @ngrx/store-devtools
+npm install ngx-image-cropper
+npm install rxfire
+npm install @angular/flex-layout
