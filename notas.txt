@@ -10,3 +10,13 @@ npm install @ngrx/store-devtools
 npm install ngx-image-cropper
 npm install rxfire
 npm install @angular/flex-layout
+
+ng g module shared/indicators
+ng g module shared/indicators/spinner
+ng g component shared/indicators/spinner
+ng g module shared/popups
+ng g module shared/popups/files-upload
+ng g component shared/popups/files-upload
+
+
+ng g directive shared/popups/files-upload/files-upload
