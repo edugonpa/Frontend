@@ -20,3 +20,5 @@ ng g component shared/popups/files-upload
 
 
 ng g directive shared/popups/files-upload/files-upload
+ng g directive shared/popups/files-upload/directives/drop-zone/drop-zone
+ng g component shared/popups/files-upload/components/upload
