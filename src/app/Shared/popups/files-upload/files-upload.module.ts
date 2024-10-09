@@ -5,6 +5,7 @@ import { FilesUploadDirective } from './files-upload.directive';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DropZoneDirective } from './directives';
 import { UploadComponent } from './components/upload/upload.component';
+import { FileSizePipe } from './pipes/file-size/file-size.pipe';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { UploadComponent } from './components/upload/upload.component';
     FilesUploadComponent,
     FilesUploadDirective,
     DropZoneDirective,
-    UploadComponent
+    UploadComponent,
+    FileSizePipe
   ],
   imports: [
     CommonModule,

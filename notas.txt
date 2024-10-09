@@ -22,3 +22,9 @@ ng g component shared/popups/files-upload
 ng g directive shared/popups/files-upload/files-upload
 ng g directive shared/popups/files-upload/directives/drop-zone/drop-zone
 ng g component shared/popups/files-upload/components/upload
+
+ng g pipe shared/popups/files-upload/pipes/file-size/file-size
+ng g module services/notification
+ng g service services/notification/notification
+
+ng g component services/notification/components/notification
