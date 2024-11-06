@@ -28,3 +28,20 @@ ng g module services/notification
 ng g service services/notification/notification
 
 ng g component services/notification/components/notification
+ng g component components/header
+ng g component components/menu-list
+
+
+ng g module pages/static --routing
+ng g module pages/static/pages/welcome --routing
+ng g module pages/static/pages/not-found --routing
+
+ng g component pages/static/pages/welcome
+ng g component pages/static/pages/not-found
+
+ng g module pages/auth --routing
+ng g module pages/auth/pages/login --routing
+ng g component pages/auth/pages/login
+ng g module pages/auth/pages/registration --routing
+ng g component pages/auth/pages/registration
+
