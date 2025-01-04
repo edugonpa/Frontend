@@ -29,6 +29,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { MatListModule } from '@angular/material/list';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, effects } from './store';
+
+
+const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({maxAge:50}) : [];
 
 @NgModule({
   declarations: [
@@ -59,7 +66,15 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatListModule
+    MatListModule,
+    StoreDevtools,
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictStateImmutability: true
+      }
+    }),
+    EffectsModule.forRoot(effects)
   ],
   providers: [],
   bootstrap: [AppComponent]
