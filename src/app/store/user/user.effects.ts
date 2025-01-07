@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as fromActions from './user.actions';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { NotificationService } from '@app/services';
 import { Router } from '@angular/router';
@@ -25,10 +25,15 @@ export class UserEffects {
       ofType(fromActions.Types.SIGIN_UP_EMAIL),
       map((action: fromActions.SignUpEmail) => action.user),
       switchMap( userData =>
-        this.httpClient.post<UserResponse>(`${environment.url}api/usuario/registrar`, userData)
+        this.httpClient.post<UserResponse>(`${environment.url}api/usuario/registrar`, userData,
+          {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json' // Indica que el contenido es JSON
+            })
+          })
         .pipe(
           tap((response: UserResponse) => {
-            localStorage.setItem('token', response.token.access);
+            localStorage.setItem('token', response.token);
             this.router.navigate(['/']);
           }),
           map((response: UserResponse) => new fromActions.SignUpEmailSuccess(response.email, response || null)),
@@ -44,12 +49,17 @@ export class UserEffects {
   signInEmail: Observable<Action> = createEffect(() =>
     this.actions.pipe(
       ofType(fromActions.Types.SIGN_IN_EMAIL),
-      map((action: fromActions.SignUpEmail) => action.user),
+      map((action: fromActions.SignInEmail) => action.credentials),
       switchMap( userData =>
-        this.httpClient.post<UserResponse>(`${environment.url}api/usuario/login`, userData)
+        this.httpClient.post<UserResponse>(`${environment.url}api/usuario/login`, userData,
+          {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json' // Indica que el contenido es JSON
+            })
+          })
         .pipe(
           tap((response: UserResponse) => {
-            localStorage.setItem('token', response.token.access);
+            localStorage.setItem('token', response.token);
             this.router.navigate(['/']);
           }),
           map((response: UserResponse) => new fromActions.SignInEmailSuccess(response.email, response || null)),

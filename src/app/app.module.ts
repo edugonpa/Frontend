@@ -33,6 +33,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers, effects } from './store';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({maxAge:50}) : [];
@@ -45,6 +46,7 @@ const StoreDevtools = !environment.production ? StoreDevtoolsModule.instrument({
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
 
     provideFirebaseApp(() => initializeApp(environment.firebase.config)),
