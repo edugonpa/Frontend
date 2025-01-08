@@ -8,6 +8,7 @@ import { User } from '../../models/backend/user/index';
 export interface UserState {
   entity: UserResponse | null;
   id: string | null;
+  email: string | null;
   loading: boolean | null;
   error: string | null;
 }
@@ -15,6 +16,7 @@ export interface UserState {
 const initialState: UserState = {
   entity: null,
   id: null,
+  email: null,
   loading: null,
   error: null
 }

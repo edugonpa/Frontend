@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserResponse } from '@app/store/user';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output() menuToggle = new EventEmitter<void>();
+  @Input() user ! : UserResponse | null;
+  @Input() isAuthorized! : boolean | null;
+  @Output() signOut = new EventEmitter<void>();
 
   constructor() { }
 
@@ -16,6 +20,10 @@ export class HeaderComponent implements OnInit {
 
   onMenuToggleDispatch(): void{
     this.menuToggle.emit();
+  }
+
+  onSignOut(): void {
+    this.signOut.emit();
   }
 
 }
