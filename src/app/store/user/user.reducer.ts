@@ -8,7 +8,6 @@ import { User } from '../../models/backend/user/index';
 export interface UserState {
   entity: UserResponse | null;
   id: string | null;
-  email: string | null;
   loading: boolean | null;
   error: string | null;
 }
@@ -16,7 +15,6 @@ export interface UserState {
 const initialState: UserState = {
   entity: null,
   id: null,
-  email: null,
   loading: null,
   error: null
 }
@@ -41,12 +39,13 @@ export function reducer(state = initialState, action: fromActions.All | any): Us
       return { ...state, loading: false, entity: null, id: null, error: null };
     }
 
+    //login
     case fromActions.Types.SIGN_IN_EMAIL: {
       return { ...state, loading: true, entity: null, id: null, error: null };
     }
 
     case fromActions.Types.SIGN_IN_EMAIL_SUCCESS: {
-      return { ...state, loading: false, entity: action.User, id: action.id, error: action.error };
+      return { ...state, loading: false, entity: action.User, id: action.id, error: null };
     }
 
     case fromActions.Types.SIGN_IN_EMAIL_ERROR: {
@@ -54,28 +53,28 @@ export function reducer(state = initialState, action: fromActions.All | any): Us
     }
 
     //registro de usuarios
-    case fromActions.Types.SIGIN_UP_EMAIL: {
+    case fromActions.Types.SIGN_UP_EMAIL: {
       return { ...state, loading: true, entity: null, id: null, error: null };
     }
 
-    case fromActions.Types.SIGIN_UP_EMAIL_SUCCESS: {
-      return { ...state, loading: false, entity: action.User, id: action.id, error: action.error };
+    case fromActions.Types.SIGN_UP_EMAIL_SUCCESS: {
+      return { ...state, loading: false, entity: action.User, id: action.id, error: null };
     }
 
-    case fromActions.Types.SIGIN_UP_EMAIL_ERROR: {
+    case fromActions.Types.SIGN_UP_EMAIL_ERROR: {
       return { ...state, loading: false, entity: null, id: null, error: action.error };
     }
 
     //Logout o salir de sesion
-    case fromActions.Types.SIGIN_OUT_EMAIL: {
+    case fromActions.Types.SIGN_OUT_EMAIL: {
       return { ...initialState };
     }
 
-    case fromActions.Types.SIGIN_OUT_EMAIL_SUCCESS: {
+    case fromActions.Types.SIGN_OUT_EMAIL_SUCCESS: {
       return { ...initialState };
     }
 
-    case fromActions.Types.SIGIN_OUT_EMAIL_ERROR: {
+    case fromActions.Types.SIGN_OUT_EMAIL_ERROR: {
       return { ...state, loading: false, entity: null, id: null, error: action.error };
     }
 

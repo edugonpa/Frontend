@@ -4,8 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { NotificationService } from '@app/services';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { Observable, of, catchError, map, switchMap, tap } from 'rxjs';
 import { UserResponse } from './user.models';
 import { environment } from 'environments/environment';
 
@@ -22,7 +21,7 @@ export class UserEffects {
 
   signUpEmail: Observable<Action> = createEffect(() =>
     this.actions.pipe(
-      ofType(fromActions.Types.SIGIN_UP_EMAIL),
+      ofType(fromActions.Types.SIGN_UP_EMAIL),
       map((action: fromActions.SignUpEmail) => action.user),
       switchMap( userData =>
         this.httpClient.post<UserResponse>(`${environment.url}api/usuario/registrar`, userData,

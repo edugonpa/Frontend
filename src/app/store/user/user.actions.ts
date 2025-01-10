@@ -3,21 +3,21 @@ import { EmailPasswordCredentials, UserCreateRequest, UserResponse } from './use
 
 export enum Types {
   INIT = '[User] Init: Start',
-  INIT_AUTHORIZED = '[User] Init:Authorized',
-  INIT_UNAUTHORIZED = '[User] Init:UnAuthorized',
-  INIT_ERROR = '[User] Init:Error',
+  INIT_AUTHORIZED = '[User] Init: Authorized',
+  INIT_UNAUTHORIZED = '[User] Init: UnAuthorized',
+  INIT_ERROR = '[User] Init: Error',
 
   SIGN_IN_EMAIL = '[User] Login: Start',
   SIGN_IN_EMAIL_SUCCESS = '[User] Login: Success',
   SIGN_IN_EMAIL_ERROR = '[User] Login: Error',
 
-  SIGIN_UP_EMAIL = '[User] Registrar usuario con Email: Start',
-  SIGIN_UP_EMAIL_SUCCESS = '[User] Registrar usuario con Email: Success',
-  SIGIN_UP_EMAIL_ERROR = '[User] Registrar usuario con Email: Error',
+  SIGN_UP_EMAIL = '[User] Registrar usuario con Email: Start',
+  SIGN_UP_EMAIL_SUCCESS = '[User] Registrar usuario con Email: Success',
+  SIGN_UP_EMAIL_ERROR = '[User] Registrar usuario con Email: Error',
 
-  SIGIN_OUT_EMAIL = '[User] Logout: Start',
-  SIGIN_OUT_EMAIL_SUCCESS = '[User] Logout: Success',
-  SIGIN_OUT_EMAIL_ERROR = '[User] Logout: Error',
+  SIGN_OUT_EMAIL = '[User] Logout: Start',
+  SIGN_OUT_EMAIL_SUCCESS = '[User] Logout: Success',
+  SIGN_OUT_EMAIL_ERROR = '[User] Logout: Error',
 }
 
 //INIT -> EL USUARIO ESTA EN SESION?
@@ -60,33 +60,33 @@ export class SignInEmailError implements Action {
 //SignUp o Registro de Usuarios
 
 export class SignUpEmail implements Action {
-  readonly type = Types.SIGIN_UP_EMAIL;
+  readonly type = Types.SIGN_UP_EMAIL;
   constructor(public user: UserCreateRequest){}
 }
 
 export class SignUpEmailSuccess implements Action {
-  readonly type = Types.SIGIN_UP_EMAIL_SUCCESS;
+  readonly type = Types.SIGN_UP_EMAIL_SUCCESS;
   constructor(public email: string, public user: UserResponse | null){}
 }
 
 export class SignUpEmailError implements Action {
-  readonly type = Types.SIGIN_UP_EMAIL_ERROR;
+  readonly type = Types.SIGN_UP_EMAIL_ERROR;
   constructor(public error: string){}
 }
 
 //salir de sessión o logout
 export class SignOut implements Action {
-  readonly type = Types.SIGIN_OUT_EMAIL;
+  readonly type = Types.SIGN_OUT_EMAIL;
   constructor(){}
 }
 
 export class SignOutSuccess implements Action {
-  readonly type = Types.SIGIN_OUT_EMAIL_SUCCESS;
+  readonly type = Types.SIGN_OUT_EMAIL_SUCCESS;
   constructor(){}
 }
 
 export class SignOutError implements Action {
-  readonly type = Types.SIGIN_OUT_EMAIL_ERROR;
+  readonly type = Types.SIGN_OUT_EMAIL_ERROR;
   constructor(public error: string){}
 }
 
